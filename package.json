@@ -1,0 +1,27 @@
+{
+  "name": "into_back_end",
+  "version": "1.0.0",
+  "description": "This is an introduction series to backend development",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/src/index.js",
+    "dev": "nodemon backend/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KitKat-Frankie/into_back_end.git"
+  },
+  "author": "Frank Lamptey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KitKat-Frankie/into_back_end/issues"
+  },
+  "homepage": "https://github.com/KitKat-Frankie/into_back_end#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0",
+    "nodemon": "^3.1.11"
+  }
+}
