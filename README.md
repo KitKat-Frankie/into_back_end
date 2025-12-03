@@ -95,14 +95,15 @@ cd into_back_end
 npm install
 ```
 
-
+## Create an .env file
 ``` bash
 MONGO_URI=your_mongodb_connection_string
 PORT=4000
 ```
 
+## Start the development server
 ```bash
-http
+npm run dev
 ```
 
 ## 🎯 Future Improvements
