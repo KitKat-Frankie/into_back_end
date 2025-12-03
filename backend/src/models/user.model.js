@@ -1,5 +1,5 @@
-import e from "express";
 import mongoose, {Schema} from "mongoose";
+import bcrypt from "bcrypt";
 
 const UserSchema = new Schema({
     username: {
@@ -17,7 +17,7 @@ const UserSchema = new Schema({
         required: true,
         minLength: 6,
         maxLength: 25,
-        hidden: true
+        select: false // Exclude password from query results by default
     },
     
     email: {
@@ -32,6 +32,32 @@ const UserSchema = new Schema({
 },
 
 {timestamps: true});
+
+// Hash password before saving the user document
+// Modern approach - no next() needed
+
+UserSchema.pre("save", async function () {
+    // Only hash if password is modified
+    if (!this.isModified("password")) return;
+    
+    // Hash the password
+    this.password = await bcrypt.hash(this.password, 10);
+});
+
+
+// Method to compare provided password with the hashed password
+UserSchema.methods.comparePassword = async function (password) {
+
+    try {
+        return await bcrypt.compare(password, this.password);
+        
+    } catch (error) {
+        throw new Error('Password Comparison failed');
+        
+    }
+    
+};
+
 
 export const User = mongoose.model("User", UserSchema);
 
