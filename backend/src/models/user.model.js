@@ -58,6 +58,14 @@ UserSchema.methods.comparePassword = async function (password) {
     
 };
 
+UserSchema.methods.toJSON = function () {
+    const obj = this.toObject();
+    delete obj.createdAt;
+    delete obj.updatedAt;
+    delete obj.userId;
+    delete obj.__v;
+    return obj;
+};
 
 export const User = mongoose.model("User", UserSchema);
 
