@@ -112,7 +112,7 @@ npm run dev
 - **Add refresh tokens or sessions**
 - **Input validation**
 - **Add user roles**
-**Swagger documentation**
+- **Swagger documentation**
 
 
 ## 🤝 Contributing
